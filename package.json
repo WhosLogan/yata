@@ -30,5 +30,8 @@
     "lucide-svelte": "^0.298.0",
     "tailwind-merge": "^2.1.0",
     "tailwind-variants": "^0.1.19"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.9.1"
   }
 }
