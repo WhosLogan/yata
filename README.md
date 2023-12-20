@@ -24,6 +24,7 @@ You can preview the production build with `npm run preview`.
 The following variables need to be set in order to properly run Yata:
 ```
 DATABASE_URL: A url to your database instance
+DATABASE_AUTH_TOKEN: Optional, an authentication token to your db
 ```
 
 ## Deployment
