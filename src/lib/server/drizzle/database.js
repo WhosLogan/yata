@@ -6,4 +6,5 @@ const db = new drizzle(createClient({
     url: DATABASE_URL,
     authToken: DATABASE_AUTH_TOKEN
 }));
+
 export default db;
