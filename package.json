@@ -28,9 +28,11 @@
   "type": "module",
   "dependencies": {
     "@libsql/client": "^0.4.0-pre.5",
+    "argon2": "^0.31.2",
     "bits-ui": "^0.11.8",
     "clsx": "^2.0.0",
     "drizzle-orm": "^0.29.1",
+    "jose": "^5.2.0",
     "lucide-svelte": "^0.298.0",
     "tailwind-merge": "^2.1.0",
     "tailwind-variants": "^0.1.19"
