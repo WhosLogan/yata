@@ -28,7 +28,7 @@ export async function handle({event, resolve}) {
                 throw new Error("No related user");
             }
 
-            event.locals.user = [0];
+            event.locals.user = u[0];
         } catch {
             event.cookies.delete('auth', { path: '/' })
             throw redirect(303, "/");
