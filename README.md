@@ -23,6 +23,7 @@ You can preview the production build with `npm run preview`.
 ## Environment Variables
 The following variables need to be set in order to properly run Yata:
 ```
+AUTH_SECRET: A 32 byte base-64 encoded secret (used for authentication and encryption)
 DATABASE_URL: A url to your database instance
 DATABASE_AUTH_TOKEN: Optional, an authentication token to your db
 ```
