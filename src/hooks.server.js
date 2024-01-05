@@ -19,9 +19,16 @@ export async function handle({event, resolve}) {
                 issuer: 'yata',
             })
 
-            event.locals.user = (await db.select()
+            const u = (await db.select()
                 .from(users)
-                .where(eq(users.id, payload.id)))[0];
+                .where(eq(users.id, payload.id))
+                .limit(1))
+
+            if (u.length === 0) {
+                throw new Error("No related user");
+            }
+
+            event.locals.user = [0];
         } catch {
             event.cookies.delete('auth', { path: '/' })
             throw redirect(303, "/");
