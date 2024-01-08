@@ -2,7 +2,7 @@
 import {Button} from "$lib/components/ui/button";
 </script>
 
-<div class="flex border p-3 pl-5 m-3 rounded-3xl items-center justify-between">
+<div class="flex border p-3 pl-5 m-3 mb-5 rounded-3xl items-center justify-between">
     <div>
         <a class="text-2xl" href="/dashboard">Yata</a>
     </div>
