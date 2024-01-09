@@ -76,7 +76,7 @@
                     <h2 class="text-2xl">{project.name}</h2>
                     <p class="text-gray-400">{project.description}</p>
                 </div>
-                <a href="/dashboard/projects/{project.id}">
+                <a href="/dashboard/projects/{project.id}/overview">
                     <Button variant="outline">View Project</Button>
                 </a>
             </div>
