@@ -15,7 +15,7 @@ export const load = async ({locals, params}) => {
 
     // Ensure the project actually exists
     if (project.length === 0 || !project[0]) {
-        return error(404, 'Not Found');
+        throw error(404, 'Not Found');
     }
 
     // Select all time cards from the database
