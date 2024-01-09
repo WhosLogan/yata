@@ -29,7 +29,7 @@ export const load = async ({locals}) => {
         .select()
         .from(projectsSchema)
         .where(eq(projectsSchema.owner, locals.user.id))
-        .limit(25);
+        .limit(maxProjects);
 
     // Return user and projects
     return {
