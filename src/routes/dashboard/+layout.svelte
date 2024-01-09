@@ -1,6 +1,12 @@
 <script>
 import {Button} from "$lib/components/ui/button";
 import {page} from "$app/stores";
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuItem,
+    DropdownMenuContent} from "$lib/components/ui/dropdown-menu";
+import {Menu} from "lucide-svelte";
 
 const projectsNav = [
     {
@@ -26,8 +32,9 @@ $: baseurl = `/dashboard/projects/${$page.url.pathname.split('/')[3]}`;
     <div>
         <a class="text-2xl" href="/dashboard">Yata</a>
     </div>
+
     {#if $page.url.pathname.startsWith('/dashboard/projects')}
-        <div class="flex gap-2">
+        <div class="hidden md:flex gap-2">
             {#each projectsNav as link}
                 <a href="{baseurl}/{link.href}">
                     <Button variant={$page.url.pathname.endsWith(link.href) ? "secondary" : "ghost"}>
@@ -36,7 +43,29 @@ $: baseurl = `/dashboard/projects/${$page.url.pathname.split('/')[3]}`;
                 </a>
             {/each}
         </div>
+
+        <div class="md:hidden ml-6">
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild let:builder>
+                    <Button variant="ghost" builders={[builder]}>
+                        <Menu className="h-4 w-4" />
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                    {#each projectsNav as link}
+                        <DropdownMenuItem>
+                            <a href="{baseurl}/{link.href}">
+                                <Button variant="ghost">
+                                    {link.name}
+                                </Button>
+                            </a>
+                        </DropdownMenuItem>
+                    {/each}
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
     {/if}
+
     <div>
         <a data-sveltekit-preload-data="false" href="/logout">
             <Button variant="outline">Logout</Button>
