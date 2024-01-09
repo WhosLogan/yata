@@ -1,8 +1,10 @@
 import {z} from "zod"
 import {fail, redirect} from "@sveltejs/kit";
 import db from "$lib/server/drizzle/database.js";
-import {projects as projectsSchema, projects} from "$lib/server/drizzle/schema.js";
+import {projects as projectsSchema} from "$lib/server/drizzle/schema.js";
 import {eq} from "drizzle-orm";
+
+const maxProjects = 25;
 
 const newProjectSchema = z.object({
     name: z.string()
@@ -59,12 +61,27 @@ export const actions = {
             })
         }
 
-        let insertedProject = await db.insert(projects).values({
+        const projects = await db.select({
+            id: projectsSchema.id
+        })
+            .from(projectsSchema)
+            .where(eq(projectsSchema.owner, locals.user.id))
+
+
+        if (projects.length >= maxProjects) {
+            return fail(400, {
+                error: {
+                    message: "You have the maximum number of projects available"
+                }
+            })
+        }
+
+        let insertedProject = await db.insert(projectsSchema).values({
             name: newProject.data.name,
             description: newProject.data.description,
             rate: newProject.data.rate,
             owner: locals.user.id
-        }).returning({id: projects.id});
+        }).returning({id: projectsSchema.id});
 
         return redirect(303, `/dashboard/projects/${insertedProject[0].id}`)
     }
