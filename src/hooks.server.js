@@ -9,7 +9,7 @@ export async function handle({event, resolve}) {
     if (event.url.pathname.startsWith('/dashboard')) {
         const authToken = event.cookies.get('auth');
         if (!authToken || authToken === "") {
-            throw redirect(303, "/");
+            return redirect(303, "/");
         }
 
         try {
@@ -25,13 +25,13 @@ export async function handle({event, resolve}) {
                 .limit(1))
 
             if (u.length === 0) {
-                throw new Error("No related user");
+                return redirect(303, "/");
             }
 
             event.locals.user = u[0];
         } catch {
             event.cookies.delete('auth', { path: '/' })
-            throw redirect(303, "/");
+            return redirect(303, "/");
         }
     }
 

@@ -7,5 +7,5 @@ export const load = ({cookies}) => {
     })
 
     // Redirect to the homepage
-    throw redirect(303, '/')
+    return redirect(303, '/')
 }
