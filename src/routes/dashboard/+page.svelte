@@ -41,7 +41,7 @@
             <DialogTrigger class={buttonVariants({variant: 'default'})}>
                 Create Project
             </DialogTrigger>
-            <DialogContent class="max-w-72 md:max-w-96">
+            <DialogContent class="w-3/4 md:max-w-96">
                 <DialogHeader>
                     <DialogTitle>Create Project</DialogTitle>
                     <DialogDescription>Create a new yata project</DialogDescription>
