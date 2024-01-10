@@ -19,17 +19,7 @@
 
     let search = '';
     let projects = []
-    let maxCols = 3
     $: projects = data.projects.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || search === '')
-    $: {
-        if (projects.length >= 3) {
-            maxCols = 3;
-        } else if (projects.length === 2) {
-            maxCols = 2;
-        } else {
-            maxCols = 1;
-        }
-    }
 </script>
 
 <h2 class="text-2xl hidden">Projects</h2>
@@ -69,7 +59,7 @@
 </div>
 
 <div class="flex justify-center mt-5">
-    <div class="grid md:grid-cols-{maxCols > 2 ? 2 : maxCols} lg:grid-cols-{maxCols} gap-2 justify-center">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center">
         {#each projects as project}
             <div class="shadow-sm bg-card border p-5 rounded flex items-center gap-5 justify-between">
                 <div class="flex flex-col gap-2">
