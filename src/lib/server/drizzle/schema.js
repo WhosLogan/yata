@@ -26,6 +26,7 @@ export const timeCards = sqliteTable(
         id: integer('id', {mode: 'number'}).primaryKey({autoIncrement: true}),
         start: integer('start', {mode: 'timestamp_ms'}).notNull(),
         end: integer('end', {mode: 'timestamp_ms'}).notNull(),
+        description: text('description'),
         project: integer('project_id', {mode: 'number'}).references(() => projects.id)
     }
 )

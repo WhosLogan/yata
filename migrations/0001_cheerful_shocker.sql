@@ -1,0 +1,1 @@
+ALTER TABLE timeCards ADD `description` text;

@@ -8,6 +8,13 @@
       "when": 1703034645866,
       "tag": "0000_sad_goblin_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1704897960019,
+      "tag": "0001_cheerful_shocker",
+      "breakpoints": true
     }
   ]
 }
