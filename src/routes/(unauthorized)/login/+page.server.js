@@ -27,6 +27,6 @@ export const actions = {
         });
 
         // Redirect the user to the dashboard
-        throw redirect(303, "/dashboard");
+        return redirect(303, "/dashboard");
     }
 }
