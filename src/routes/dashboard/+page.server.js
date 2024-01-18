@@ -83,6 +83,6 @@ export const actions = {
             owner: locals.user.id
         }).returning({id: projectsSchema.id});
 
-        return redirect(303, `/dashboard/projects/${insertedProject[0].id}`)
+        return redirect(303, `/dashboard/projects/${insertedProject[0].id}/overview`)
     }
 }
