@@ -31,6 +31,11 @@
                 <Input class="md:w-72" name="password" type="password" placeholder="Password" required />
                 <Button type="submit">Login</Button>
             </form>
+            <div class="mt-4">
+                <a class="text-sm text-zinc-400 hover:text-zinc-500" href="/register">
+                    Don't have an account?
+                </a>
+            </div>
         </CardContent>
     </Card>
 </div>

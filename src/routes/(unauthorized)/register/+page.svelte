@@ -31,6 +31,11 @@ export let form;
                 <Input class="md:w-72" name="password" type="password" placeholder="Password" required />
                 <Button type="submit">Register</Button>
             </form>
+            <div class="mt-4">
+                <a class="text-sm text-zinc-400 hover:text-zinc-500" href="/login">
+                    Already have an account?
+                </a>
+            </div>
         </CardContent>
     </Card>
 </div>
