@@ -56,14 +56,11 @@ export async function Login(username, password) {
             }
         }
 
-        // Get the users id
-        const userId = user.id;
-
         // Get the auth secret
         const secret = jose.base64url.decode(AUTH_SECRET)
 
         // Create a new jwt string
-        const jwt = await new jose.EncryptJWT({'id': userId})
+        const jwt = await new jose.EncryptJWT({'id': user.id})
             .setProtectedHeader({alg: 'dir', enc: 'A128CBC-HS256'})
             .setIssuedAt()
             .setIssuer('yata')
