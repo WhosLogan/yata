@@ -22,7 +22,6 @@ export const load = async ({locals, params}) => {
     const cards = await db.select()
         .from(timeCards)
         .where(eq(timeCards.project, project[0].id))
-        .limit(25)
 
     // Return the project and time cards
     return {
