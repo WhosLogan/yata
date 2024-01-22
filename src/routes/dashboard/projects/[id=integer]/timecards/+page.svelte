@@ -11,11 +11,12 @@ import {Input} from "$lib/components/ui/input";
 import {Button} from "$lib/components/ui/button";
 
     export let data;
+    let searchTerm = '';
 </script>
 
 <div class="flex flex-col items-center">
     <div class="flex w-full justify-center gap-3 mb-4">
-        <Input class="w-7/12" placeholder="Search" />
+        <Input class="w-7/12" placeholder="Search" bind:value={searchTerm} />
         <Button variant="outline">Create Card</Button>
     </div>
     <Table>
@@ -31,14 +32,16 @@ import {Button} from "$lib/components/ui/button";
             </TableRow>
         </TableHeader>
         <TableBody>
-            <TableRow>
-                <TableCell class="font-medium">00001</TableCell>
-                <TableCell>{new Date(Date.now()).toLocaleString('en-US', { timeZone: 'UTC' })}</TableCell>
-                <TableCell>{new Date(Date.now()).toLocaleString('en-US', { timeZone: 'UTC' })}</TableCell>
-                <TableCell>Short description of work</TableCell>
-                <TableCell>15</TableCell>
-                <TableCell class="text-right">$250.00</TableCell>
-            </TableRow>
+            {#each data.timeCards.filter(c => c.description.toLowerCase().includes(searchTerm.toLowerCase()) || searchTerm === '') as card}
+                <TableRow>
+                    <TableCell class="font-medium">{card.id}</TableCell>
+                    <TableCell>{new Date(card.start).toLocaleString('en-US')}</TableCell>
+                    <TableCell>{new Date(card.end).toLocaleString('en-US')}</TableCell>
+                    <TableCell>{card.description}</TableCell>
+                    <TableCell>{(Math.abs(card.end-card.start) / 360000).toFixed(3)}</TableCell>
+                    <TableCell class="text-right">${((Math.abs(card.end-card.start) / 360000) * data.project.rate).toFixed(2)}</TableCell>
+                </TableRow>
+            {/each}
         </TableBody>
     </Table>
 </div>
