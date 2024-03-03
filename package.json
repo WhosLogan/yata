@@ -29,6 +29,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@internationalized/date": "^3.5.2",
     "@libsql/client": "^0.4.0-pre.5",
     "argon2": "^0.31.2",
     "bits-ui": "^0.11.8",
